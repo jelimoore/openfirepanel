@@ -111,8 +111,8 @@ void keypadEvent(KeypadEvent eKey){
 
 void checkPassword(){
   if (password.evaluate()){
-    
+    elevatedMenu();
   }else{
-    
+    wrongPassword();
   }
 }
