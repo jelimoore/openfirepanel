@@ -1,6 +1,10 @@
 #include <Password.h>
 #include <LiquidCrystal.h>
 
+//////////////////////////////////////////////////
+// Config file
+//////////////////////////////////////////////////
+
 /*
  * General config
  */
@@ -9,14 +13,17 @@ String panelName = "OpenFirePanel";
 String customMessage = "#firepanel";
 Password elevatePasscode = Password("1234");
 
+//////////////////////////////////////////////////
+
 /*
  * NAC config
  * 
  * in my case 21 is strobes, 22 is horns
 */
 
-int nacs[] = [21,22];
-int silencableNacs = [0,1]; // if i hit silence button it will silence the horns but not the strobes
+int numNacs = 2;
+int nacs[] = {21,22};
+int silencableNacs[] = {0,1}; // if i hit silence button it will silence the horns but not the strobes
 
 /*
  * WIP, doesn't have any function yet
@@ -33,11 +40,15 @@ int nacWeatherCoding[] = [1,250]; // march time, 250ms on, 250ms off, 250ms on, 
 int nacSupCoding[] = [1,1];
 
 */
+
+//////////////////////////////////////////////////
+
 /*
  * Zone config
  */
 
-int zonePins[] = [40,41,42];
+int numZones = 3;
+int zonePins[] = {30,31,32};
 
 // 1 = smoke
 // 2 = co [generates fire alarm]
@@ -51,6 +62,7 @@ int zonePins[] = [40,41,42];
 // 10 = remote drill (momentary; need to reset panel after drill is over)
 // 11 = remote ack
  
-int zoneType[] = [3,5,6];
-int zoneDelay[] = [0,0,0]; // there is a 1.5 second delay by default; this is extra for smoke alarms and other "fluttery" sensors
+int zoneType[] = {3,5,6};
+int zoneDelay[] = {0,0,0}; // there is a 1.5 second delay by default; this is extra for smoke alarms and other "fluttery" sensors
+
 

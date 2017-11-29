@@ -16,6 +16,8 @@
 
 String sysver = "0.1a";
 
+LiquidCrystal lcd(53,52,51,50,49,48);
+
 void setup() {
   lcd.begin(20,4);
   lcd.print("OpenFirePanel");
@@ -27,7 +29,13 @@ void setup() {
   lcd.print("Booting...");
   delay(1000);
 
-  pinMode(
+  for (int i=0; i<numNacs-1; i++) {
+    pinMode(nacs[i], OUTPUT);
+  }
+
+  for (int i=0; i<numZones-1; i++) {
+    pinMode(zones[i], INPUT);
+  }
 }
 
 void loop() {
