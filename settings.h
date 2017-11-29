@@ -1,5 +1,6 @@
 #include <Password.h>
 #include <LiquidCrystal.h>
+#include <Keypad.h>
 
 //////////////////////////////////////////////////
 // Config file
@@ -48,7 +49,7 @@ int nacSupCoding[] = [1,1];
  */
 
 int numZones = 3;
-int zonePins[] = {30,31,32};
+int zones[] = {30,31,32};
 
 // 1 = smoke
 // 2 = co [generates fire alarm]

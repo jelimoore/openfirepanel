@@ -18,6 +18,21 @@ String sysver = "0.1a";
 
 LiquidCrystal lcd(53,52,51,50,49,48);
 
+int silenced = 0;
+
+const byte ROWS = 4;
+const byte COLS = 4;
+
+char keys[ROWS][COLS] = {
+  {'1','2','3','A'},
+  {'4','5','6','B'},
+  {'7','8','9','C'},
+  {'*','0','#','D'}
+};
+
+byte rowPins[ROWS] = {21,23,25,27};
+byte colPins[COLS] = {22,24,26,28};
+
 void setup() {
   lcd.begin(20,4);
   lcd.print("OpenFirePanel");
@@ -36,9 +51,26 @@ void setup() {
   for (int i=0; i<numZones-1; i++) {
     pinMode(zones[i], INPUT);
   }
+
+  lcd.clear();
+  lcd.setCursor(0,0);
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
 
 }
+
+void silence() {
+  for (int i=0; i<numNacs-1; i++) {
+    if (silencableNacs[i] == 1) {
+      digitalWrite(i, LOW);
+      silenced = 1;
+    }
+  }
+}
+
+void reset() {
+  
+}
+
