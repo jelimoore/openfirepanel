@@ -111,10 +111,8 @@ void keypadEvent(KeypadEvent eKey){
 
 void checkPassword(){
   if (password.evaluate()){
-    Serial.println("Success");
-    //Add code to run if it works
+    
   }else{
-    Serial.println("Wrong");
-    //add code to run if it did not work
+    
   }
 }
