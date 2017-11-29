@@ -33,6 +33,8 @@ char keys[ROWS][COLS] = {
 byte rowPins[ROWS] = {21,23,25,27};
 byte colPins[COLS] = {22,24,26,28};
 
+Keypad keypad = Keypad( makeKeymap(keys), rowPins, colPins, ROWS, COLS );
+
 void setup() {
   lcd.begin(20,4);
   lcd.print("OpenFirePanel");
@@ -44,6 +46,8 @@ void setup() {
   lcd.print("Booting...");
   delay(1000);
 
+  keypad.addEventListener(keypadEvent);
+  
   for (int i=0; i<numNacs-1; i++) {
     pinMode(nacs[i], OUTPUT);
   }
@@ -52,13 +56,11 @@ void setup() {
     pinMode(zones[i], INPUT);
   }
 
-  lcd.clear();
-  lcd.setCursor(0,0);
+  drawLcdAllNormal();
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-
+  keypad.getKey();
 }
 
 void silence() {
@@ -70,7 +72,49 @@ void silence() {
   }
 }
 
+void checkZones() {
+  
+}
+
+void ack() {
+  
+}
+
+void fireAlarm() {
+  
+}
+
 void reset() {
   
 }
 
+void drawLcdAllNormal() {
+  lcd.clear();
+  lcd.setCursor(0,0);
+  lcd.print(panelName);
+  lcd.setCursor(0,1);
+  lcd.print(customMessage);
+  lcd.setCursor(0,3);
+  lcd.print("System All Normal");
+}
+
+void keypadEvent(KeypadEvent eKey){
+  switch (keypad.getState()){
+    case PRESSED:
+  switch (eKey){
+    case '*': checkPassword(); break;
+    case '#': password.reset(); break;
+    default: password.append(eKey);
+     }
+  }
+}
+
+void checkPassword(){
+  if (password.evaluate()){
+    Serial.println("Success");
+    //Add code to run if it works
+  }else{
+    Serial.println("Wrong");
+    //add code to run if it did not work
+  }
+}
