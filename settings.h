@@ -15,9 +15,11 @@ Password elevatePasscode = Password("1234");
  * in my case 21 is strobes, 22 is horns
 */
 
-int numNacs = 2;
 int nacs[] = [21,22];
 int silencableNacs = [0,1]; // if i hit silence button it will silence the horns but not the strobes
+
+/*
+ * WIP, doesn't have any function yet
 
 // 1 = continuous
 // 2 = code3 temporal
@@ -30,15 +32,15 @@ int nacFireCoding[] = [1,2];
 int nacWeatherCoding[] = [1,250]; // march time, 250ms on, 250ms off, 250ms on, etc...
 int nacSupCoding[] = [1,1];
 
+*/
 /*
  * Zone config
  */
 
-int numZones = 1;
 int zonePins[] = [40,41,42];
 
 // 1 = smoke
-// 2 = co [generates sup alarm]
+// 2 = co [generates fire alarm]
 // 3 = pull station
 // 4 = sup alarm [general]
 // 5 = water [generates sup alarm]
@@ -50,3 +52,5 @@ int zonePins[] = [40,41,42];
 // 11 = remote ack
  
 int zoneType[] = [3,5,6];
+int zoneDelay[] = [0,0,0]; // there is a 1.5 second delay by default; this is extra for smoke alarms and other "fluttery" sensors
+
